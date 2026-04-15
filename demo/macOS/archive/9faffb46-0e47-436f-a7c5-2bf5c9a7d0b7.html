@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#3fb950">$0.0059</span>
+      <span class="cost-total" style="color:#3fb950">$0.0074</span>
       <span class="cost-label">&nbsp;|&nbsp; 7.2k tokens total &nbsp;|&nbsp; 3 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,7 +527,7 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">2.7k</div>
-        <div class="sub">$0.0022</div>
+        <div class="sub">$0.0027</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
@@ -537,12 +537,12 @@
       <div class="cost-cell">
         <div class="label">Cache Read</div>
         <div class="value">3.6k</div>
-        <div class="sub">$0.00029</div>
+        <div class="sub">$0.00036</div>
       </div>
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">870</div>
-        <div class="sub">$0.0035</div>
+        <div class="sub">$0.0043</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-haiku-4-5</span></div>
@@ -553,13 +553,13 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:30:02</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>The renamer crashes on some Fujifilm RAF files with a KeyError on 'Image DateTime'. Here's the traceback: KeyError: 'Image DateTime' in rename_by_date.py line 42</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:30:09</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:980</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:420</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0025</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0025</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Read</span></div>    <div class="text-content"><p>Fujifilm RAF stores the timestamp in <code>EXIF DateTimeOriginal</code> not <code>Image DateTime</code>. I'll update the tag lookup to try multiple tag names in priority order.</p></div><details class="tool-call" open><summary><span class="tool-name">Read</span><span class="tool-desc">photo_tools/rename_by_date.py</span></summary><div class="tool-body"><pre><code class="language-json">{
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:30:09</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:980</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:420</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0031</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0031</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Read</span></div>    <div class="text-content"><p>Fujifilm RAF stores the timestamp in <code>EXIF DateTimeOriginal</code> not <code>Image DateTime</code>. I'll update the tag lookup to try multiple tag names in priority order.</p></div><details class="tool-call" open><summary><span class="tool-name">Read</span><span class="tool-desc">photo_tools/rename_by_date.py</span></summary><div class="tool-body"><pre><code class="language-json">{
   "file_path": "photo_tools/rename_by_date.py"
 }</code></pre></div></details><details class="tool-result"><summary>Result — # file content...</summary><div class="result-body"># file content...</div></details>    <div class="timing-delta">⏱ responded in 7s</div>  </div></div>
-<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:30:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:360</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0027</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0052</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Edit</span></div>    <div class="text-content"><p>Fixed. The lookup now tries: <code>EXIF DateTimeOriginal</code>, <code>Image DateTime</code>, <code>GPS GPSDate</code> in that order before falling back to mtime.</p></div><details class="tool-call" open><summary><span class="tool-name">Edit</span><span class="tool-desc">photo_tools/rename_by_date.py</span></summary><div class="tool-body diff-view"><div class="diff-file">photo_tools/rename_by_date.py</div><div class="diff-hunk">@@ -1 +1 @@</div>
+<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:30:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:360</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0034</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0065</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Edit</span></div>    <div class="text-content"><p>Fixed. The lookup now tries: <code>EXIF DateTimeOriginal</code>, <code>Image DateTime</code>, <code>GPS GPSDate</code> in that order before falling back to mtime.</p></div><details class="tool-call" open><summary><span class="tool-name">Edit</span><span class="tool-desc">photo_tools/rename_by_date.py</span></summary><div class="tool-body diff-view"><div class="diff-file">photo_tools/rename_by_date.py</div><div class="diff-hunk">@@ -1 +1 @@</div>
 <div class="diff-line diff-line-del"><span class="diff-sign">-</span><span class="diff-text">tags['Image DateTime']</span></div>
 <div class="diff-line diff-line-add"><span class="diff-sign">+</span><span class="diff-text">next((tags[k] for k in DATE_TAGS if k in tags), None)</span></div></div></details><details class="tool-result"><summary>Result — Edit applied.</summary><div class="result-body">Edit applied.</div></details>    <div class="timing-delta">⏱ responded in 5s</div>  </div></div>
-<div class="message role-asst" id="msg-5">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:30:21</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:320</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:90</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.00076</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0059</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-5" title="permalink">¶</a></div>        <div class="text-content"><p>RAF files should rename correctly now. Test with a small batch first.</p></div>    <div class="timing-delta">⏱ responded in 3s</div>  </div></div>
+<div class="message role-asst" id="msg-5">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:30:21</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:320</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:90</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.00095</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0074</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-5" title="permalink">¶</a></div>        <div class="text-content"><p>RAF files should rename correctly now. Test with a small batch first.</p></div>    <div class="timing-delta">⏱ responded in 3s</div>  </div></div>
 </div>
 
 <div class="stats-bar">
@@ -569,7 +569,7 @@
   <div>Tool calls: <span>2</span></div>
   <div>Tokens: <span>7.2k</span></div>
   <div>Duration: <span>19s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.0059</span></div>
+  <div>Est. cost: <span class="total-cost">$0.0074</span></div>
   <div>Session: <span>9faffb46-0e47-43...</span></div>
 </div>
 

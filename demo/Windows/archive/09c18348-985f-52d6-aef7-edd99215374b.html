@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#3fb950">$0.0076</span>
+      <span class="cost-total" style="color:#3fb950">$0.0095</span>
       <span class="cost-label">&nbsp;|&nbsp; 3.2k tokens total &nbsp;|&nbsp; 2 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,7 +527,7 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">1.7k</div>
-        <div class="sub">$0.0013</div>
+        <div class="sub">$0.0017</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
@@ -542,7 +542,7 @@
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">1.6k</div>
-        <div class="sub">$0.0063</div>
+        <div class="sub">$0.0079</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-haiku-4-5</span></div>
@@ -553,13 +553,13 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">20:00:02</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>Handle JS-rendered content with Playwright</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">20:00:11</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:877</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:759</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0037</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0037</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Grep</span></div>    <div class="text-content"><p>Let me look at how this is structured.</p></div><details class="tool-call" open><summary><span class="tool-name">Grep</span><span class="tool-desc">def process</span></summary><div class="tool-body"><pre><code class="language-json">{
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">20:00:11</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:877</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:759</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0047</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0047</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Grep</span></div>    <div class="text-content"><p>Let me look at how this is structured.</p></div><details class="tool-call" open><summary><span class="tool-name">Grep</span><span class="tool-desc">def process</span></summary><div class="tool-body"><pre><code class="language-json">{
   "pattern": "def process",
   "type": "py"
 }</code></pre></div></details><details class="tool-result"><summary>Result — src/main.py:14:def process(items: list) -&gt; list:</summary><div class="result-body">src/main.py:14:def process(items: list) -&gt; list:
 src/utils.py:8:def process_batch(data):</div></details>    <div class="timing-delta">⏱ responded in 9s</div>  </div></div>
 <div class="message role-user" id="msg-3">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">20:02:14</span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>        <div class="text-content"><p>Can we add a progress indicator for the long-running loop?</p></div>      </div></div>
-<div class="message role-asst" id="msg-4">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">20:02:29</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:787</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:818</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0039</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0076</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-4" title="permalink">¶</a></div>        <div class="text-content"><p>Added the <code>--dry-run</code> flag — it short-circuits before any writes and prints what would change:</p>
+<div class="message role-asst" id="msg-4">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">20:02:29</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:787</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:818</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0049</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0095</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-4" title="permalink">¶</a></div>        <div class="text-content"><p>Added the <code>--dry-run</code> flag — it short-circuits before any writes and prints what would change:</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python">def run(args):
     changes = compute_changes(args.source, args.dest)
@@ -579,7 +579,7 @@ src/utils.py:8:def process_batch(data):</div></details>    <div class="timing-de
   <div>Tool calls: <span>1</span></div>
   <div>Tokens: <span>3.2k</span></div>
   <div>Duration: <span>2m 27s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.0076</span></div>
+  <div>Est. cost: <span class="total-cost">$0.0095</span></div>
   <div>Session: <span>09c18348-985f-52...</span></div>
 </div>
 

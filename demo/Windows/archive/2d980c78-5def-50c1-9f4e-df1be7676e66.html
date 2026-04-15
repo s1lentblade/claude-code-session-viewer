@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#3fb950">$0.0120</span>
+      <span class="cost-total" style="color:#3fb950">$0.0150</span>
       <span class="cost-label">&nbsp;|&nbsp; 6.9k tokens total &nbsp;|&nbsp; 2 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,7 +527,7 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">4.9k</div>
-        <div class="sub">$0.0039</div>
+        <div class="sub">$0.0049</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
@@ -542,7 +542,7 @@
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">2.0k</div>
-        <div class="sub">$0.0081</div>
+        <div class="sub">$0.0101</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-haiku-4-5</span></div>
@@ -553,7 +553,7 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:00:02</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>High score screen with name entry</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:00:12</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.1k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:942</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0054</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0054</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Here's a version that scales better — replacing the nested loop with a dict lookup brings this from O(n²) to O(n):</p>
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:00:12</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.1k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:942</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0068</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0068</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Here's a version that scales better — replacing the nested loop with a dict lookup brings this from O(n²) to O(n):</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python">def find_duplicates(items: list[str]) -&gt; list[str]:
     seen: dict[str, int] = {}
@@ -569,7 +569,7 @@
 
 <p>At 10× data volume the original would take ~100× longer; this stays linear.</p></div>    <div class="timing-delta">⏱ responded in 10s</div>  </div></div>
 <div class="message role-user" id="msg-2">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:01:43</span><a class="msg-anchor" href="#msg-2" title="permalink">¶</a></div>        <div class="text-content"><p>Can we refactor this to be more readable?</p></div>      </div></div>
-<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:02:00</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.1k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0066</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0120</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Bash</span></div>    <div class="text-content"><p>I'll run the tests to see what's currently failing.</p></div><details class="tool-call" open><summary><span class="tool-name">Bash</span><span class="tool-desc">python -m pytest tests/ -q</span></summary><div class="tool-body"><pre><code class="language-json">{
+<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:02:00</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.1k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0082</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0150</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Bash</span></div>    <div class="text-content"><p>I'll run the tests to see what's currently failing.</p></div><details class="tool-call" open><summary><span class="tool-name">Bash</span><span class="tool-desc">python -m pytest tests/ -q</span></summary><div class="tool-body"><pre><code class="language-json">{
   "command": "python -m pytest tests/ -q"
 }</code></pre></div></details><details class="tool-result"><summary>Result — Running...</summary><div class="result-body">Running...
 Compiled 3 files
@@ -584,7 +584,7 @@ Build complete.</div></details>    <div class="timing-delta">⏱ responded in 17
   <div>Tool calls: <span>1</span></div>
   <div>Tokens: <span>6.9k</span></div>
   <div>Duration: <span>2m 1s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.0120</span></div>
+  <div>Est. cost: <span class="total-cost">$0.0150</span></div>
   <div>Session: <span>2d980c78-5def-50...</span></div>
 </div>
 

@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#f0883e">$0.3476</span>
+      <span class="cost-total" style="color:#d29922">$0.1158</span>
       <span class="cost-label">&nbsp;|&nbsp; 15.4k tokens total &nbsp;|&nbsp; 2 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,22 +527,22 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">4.4k</div>
-        <div class="sub">$0.0660</div>
+        <div class="sub">$0.0220</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
         <div class="value">4.2k</div>
-        <div class="sub">$0.0788</div>
+        <div class="sub">$0.0262</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Read</div>
         <div class="value">4.2k</div>
-        <div class="sub">$0.0063</div>
+        <div class="sub">$0.0021</div>
       </div>
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">2.6k</div>
-        <div class="sub">$0.1965</div>
+        <div class="sub">$0.0655</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-opus-4-5</span></div>
@@ -553,13 +553,13 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">03:30:02</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>I'm a Python developer learning Rust. Explain ownership and borrowing in terms I'd already understand from Python — what's the mental model shift?</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">03:30:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:4.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.6k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#f0883e" title="estimated cost this turn">$0.2288</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.2288</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Great starting point. In Python, every object is reference-counted and the GC handles cleanup. In Rust, the compiler tracks ownership statically at compile time — no runtime cost.</p>
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">03:30:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:4.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.6k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#d29922" title="estimated cost this turn">$0.0762</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0762</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Great starting point. In Python, every object is reference-counted and the GC handles cleanup. In Rust, the compiler tracks ownership statically at compile time — no runtime cost.</p>
 
 <p>The key mental shift: in Python you pass references freely and trust the GC. In Rust, every value has exactly one owner at a time. When the owner goes out of scope, the value is dropped — no GC needed.</p>
 
 <p><strong>Borrowing</strong> is Rust's way of letting you temporarily use a value without taking ownership. Think of it like a Python context manager — you borrow it for a scope, then it goes back.</p></div>    <div class="timing-delta">⏱ responded in 14s</div>  </div></div>
 <div class="message role-user" id="msg-2">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">03:30:24</span><a class="msg-anchor" href="#msg-2" title="permalink">¶</a></div>        <div class="text-content"><p>What about mutable vs immutable borrows? When would I hit a borrow checker error?</p></div>      </div></div>
-<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">03:30:36</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.6k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:4.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:980</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#f0883e" title="estimated cost this turn">$0.1188</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.3476</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>        <div class="text-content"><p>The rule: you can have <strong>either</strong> one mutable borrow <strong>or</strong> any number of immutable borrows at the same time — never both.</p>
+<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">03:30:36</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.6k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:4.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:980</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#d29922" title="estimated cost this turn">$0.0396</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.1158</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>        <div class="text-content"><p>The rule: you can have <strong>either</strong> one mutable borrow <strong>or</strong> any number of immutable borrows at the same time — never both.</p>
 
 <p>In Python terms: imagine a list you're iterating over. If you mutate it mid-loop, bad things happen. Rust prevents that at compile time.</p>
 
@@ -574,7 +574,7 @@
   <div>Tool calls: <span>0</span></div>
   <div>Tokens: <span>15.4k</span></div>
   <div>Duration: <span>34s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.3476</span></div>
+  <div>Est. cost: <span class="total-cost">$0.1158</span></div>
   <div>Session: <span>7578a4b7-1ae9-41...</span></div>
 </div>
 

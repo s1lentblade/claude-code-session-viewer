@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#3fb950">$0.0125</span>
+      <span class="cost-total" style="color:#3fb950">$0.0156</span>
       <span class="cost-label">&nbsp;|&nbsp; 6.3k tokens total &nbsp;|&nbsp; 2 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,7 +527,7 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">3.9k</div>
-        <div class="sub">$0.0031</div>
+        <div class="sub">$0.0039</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
@@ -542,7 +542,7 @@
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">2.3k</div>
-        <div class="sub">$0.0093</div>
+        <div class="sub">$0.0117</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-haiku-4-5</span></div>
@@ -553,7 +553,7 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">10:00:02</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>Handle rate limiting with exponential backoff</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">10:00:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.3k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0070</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0070</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Here's the progress indicator using <code>tqdm</code> — drops in with one import:</p>
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">10:00:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.3k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0088</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0088</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Here's the progress indicator using <code>tqdm</code> — drops in with one import:</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python">from tqdm import tqdm
 
@@ -571,7 +571,7 @@ for i, record in enumerate(records, 1):
     results.append(transform(record))
 print()</code></pre></div>    <div class="timing-delta">⏱ responded in 14s</div>  </div></div>
 <div class="message role-user" id="msg-2">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">10:01:05</span><a class="msg-anchor" href="#msg-2" title="permalink">¶</a></div>        <div class="text-content"><p>What's the performance overhead of this approach?</p></div>      </div></div>
-<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">10:01:22</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.0k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0054</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0125</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Grep</span></div>    <div class="text-content"><p>I'll check the existing code.</p></div><details class="tool-call" open><summary><span class="tool-name">Grep</span><span class="tool-desc">def process</span></summary><div class="tool-body"><pre><code class="language-json">{
+<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">10:01:22</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.0k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0068</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0156</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Grep</span></div>    <div class="text-content"><p>I'll check the existing code.</p></div><details class="tool-call" open><summary><span class="tool-name">Grep</span><span class="tool-desc">def process</span></summary><div class="tool-body"><pre><code class="language-json">{
   "pattern": "def process",
   "type": "py"
 }</code></pre></div></details><details class="tool-result"><summary>Result — src/main.py:14:def process(items: list) -&gt; list:</summary><div class="result-body">src/main.py:14:def process(items: list) -&gt; list:
@@ -585,7 +585,7 @@ src/utils.py:8:def process_batch(data):</div></details>    <div class="timing-de
   <div>Tool calls: <span>1</span></div>
   <div>Tokens: <span>6.3k</span></div>
   <div>Duration: <span>1m 23s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.0125</span></div>
+  <div>Est. cost: <span class="total-cost">$0.0156</span></div>
   <div>Session: <span>db023b3a-1bc8-5f...</span></div>
 </div>
 

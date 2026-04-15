@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#f0883e">$0.4209</span>
+      <span class="cost-total" style="color:#d29922">$0.1403</span>
       <span class="cost-label">&nbsp;|&nbsp; 29.2k tokens total &nbsp;|&nbsp; 3 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,22 +527,22 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">4.4k</div>
-        <div class="sub">$0.0657</div>
+        <div class="sub">$0.0219</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
         <div class="value">7.4k</div>
-        <div class="sub">$0.1388</div>
+        <div class="sub">$0.0462</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Read</div>
         <div class="value">14.8k</div>
-        <div class="sub">$0.0222</div>
+        <div class="sub">$0.0074</div>
       </div>
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">2.6k</div>
-        <div class="sub">$0.1943</div>
+        <div class="sub">$0.0648</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-opus-4-5</span></div>
@@ -553,13 +553,13 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">05:30:02</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>Build the CLI interface for logging a workout session. I want to type <code>python log.py</code> and be prompted interactively for each exercise.</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">05:30:14</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:7.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.6k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#f0883e" title="estimated cost this turn">$0.3023</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.3023</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Write</span></div>    <div class="text-content"><p>I'll build an interactive prompt loop using the <code>questionary</code> library for a nice UX.</p></div><details class="tool-call" open><summary><span class="tool-name">Write</span><span class="tool-desc">workout/log.py</span></summary><div class="tool-body write-content diff-view"><div class="diff-file">workout/log.py</div><pre><code class="language-python">import questionary
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">05:30:14</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:2.8k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:7.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:1.6k</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#f0883e" title="estimated cost this turn">$0.1008</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.1008</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Write</span></div>    <div class="text-content"><p>I'll build an interactive prompt loop using the <code>questionary</code> library for a nice UX.</p></div><details class="tool-call" open><summary><span class="tool-name">Write</span><span class="tool-desc">workout/log.py</span></summary><div class="tool-body write-content diff-view"><div class="diff-file">workout/log.py</div><pre><code class="language-python">import questionary
 import sqlite3
 ...</code></pre></div></details><details class="tool-result"><summary>Result — File written.</summary><div class="result-body">File written.</div></details>    <div class="timing-delta">⏱ responded in 12s</div>  </div></div>
-<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">05:30:22</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:7.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:840</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#d29922" title="estimated cost this turn">$0.0921</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.3944</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Edit</span></div>    <div class="text-content"><p>The session auto-saves after each exercise. Let me also add a quick-entry shorthand: <code>5x80</code> means 5 reps at 80kg.</p></div><details class="tool-call" open><summary><span class="tool-name">Edit</span><span class="tool-desc">workout/log.py</span></summary><div class="tool-body diff-view"><div class="diff-file">workout/log.py</div><div class="diff-hunk">@@ -1 +1 @@</div>
+<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">05:30:22</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:1.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:7.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:840</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#d29922" title="estimated cost this turn">$0.0307</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.1315</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Edit</span></div>    <div class="text-content"><p>The session auto-saves after each exercise. Let me also add a quick-entry shorthand: <code>5x80</code> means 5 reps at 80kg.</p></div><details class="tool-call" open><summary><span class="tool-name">Edit</span><span class="tool-desc">workout/log.py</span></summary><div class="tool-body diff-view"><div class="diff-file">workout/log.py</div><div class="diff-hunk">@@ -1 +1 @@</div>
 <div class="diff-line diff-line-del"><span class="diff-sign">-</span><span class="diff-text"># parse reps/weight</span></div>
 <div class="diff-line diff-line-add"><span class="diff-sign">+</span><span class="diff-text">m = re.match(r'(\d+)x(\d+\.?\d*)', entry)</span></div></div></details><details class="tool-result"><summary>Result — Edit applied.</summary><div class="result-body">Edit applied.</div></details>    <div class="timing-delta">⏱ responded in 6s</div>  </div></div>
-<div class="message role-asst" id="msg-5">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">05:30:29</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:380</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:7.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:130</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#d29922" title="estimated cost this turn">$0.0266</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.4209</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-5" title="permalink">¶</a></div>        <div class="text-content"><p>Done. The shorthand parser handles <code>5x80</code>, <code>3x12</code>, and <code>10x0</code> (bodyweight).</p></div>    <div class="timing-delta">⏱ responded in 5s</div>  </div></div>
+<div class="message role-asst" id="msg-5">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">05:30:29</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:380</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:7.4k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:130</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0089</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.1403</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">opus-4-5</span></span><a class="msg-anchor" href="#msg-5" title="permalink">¶</a></div>        <div class="text-content"><p>Done. The shorthand parser handles <code>5x80</code>, <code>3x12</code>, and <code>10x0</code> (bodyweight).</p></div>    <div class="timing-delta">⏱ responded in 5s</div>  </div></div>
 </div>
 
 <div class="stats-bar">
@@ -569,7 +569,7 @@ import sqlite3
   <div>Tool calls: <span>2</span></div>
   <div>Tokens: <span>29.2k</span></div>
   <div>Duration: <span>27s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.4209</span></div>
+  <div>Est. cost: <span class="total-cost">$0.1403</span></div>
   <div>Session: <span>5b1beec3-9596-45...</span></div>
 </div>
 

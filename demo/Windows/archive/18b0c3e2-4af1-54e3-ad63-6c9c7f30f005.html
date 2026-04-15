@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#3fb950">$0.0099</span>
+      <span class="cost-total" style="color:#3fb950">$0.0124</span>
       <span class="cost-label">&nbsp;|&nbsp; 8.3k tokens total &nbsp;|&nbsp; 3 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,22 +527,22 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">2.0k</div>
-        <div class="sub">$0.0016</div>
+        <div class="sub">$0.0020</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
         <div class="value">195</div>
-        <div class="sub">$0.00019</div>
+        <div class="sub">$0.00024</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Read</div>
         <div class="value">4.1k</div>
-        <div class="sub">$0.00033</div>
+        <div class="sub">$0.00041</div>
       </div>
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">1.9k</div>
-        <div class="sub">$0.0078</div>
+        <div class="sub">$0.0097</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-haiku-4-5</span></div>
@@ -553,7 +553,7 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:00:05</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>Add progress charts per exercise over time</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:00:09</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:787</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:195</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:681</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0035</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0035</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>I've applied the fix. The root cause was an off-by-one in the slice — the last element was silently dropped:</p>
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:00:09</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:787</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:195</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:681</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0044</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0044</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>I've applied the fix. The root cause was an off-by-one in the slice — the last element was silently dropped:</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python"># before
 results = data[0:len(data) - 1]
@@ -563,7 +563,7 @@ results = data[:]</code></pre>
 
 <p>All five tests pass now. The missing branch in coverage was the single-element list case.</p></div>    <div class="timing-delta">⏱ responded in 4s</div>  </div></div>
 <div class="message role-user" id="msg-2">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:01:12</span><a class="msg-anchor" href="#msg-2" title="permalink">¶</a></div>        <div class="text-content"><p>Can you add error handling for the network call?</p></div>      </div></div>
-<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:01:23</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:636</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:807</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0037</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0073</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Read</span></div>    <div class="text-content"><p>I'll check the existing code.</p></div><details class="tool-call" open><summary><span class="tool-name">Read</span><span class="tool-desc">src/main.py</span></summary><div class="tool-body"><pre><code class="language-json">{
+<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:01:23</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:636</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:807</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0047</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0091</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Read</span></div>    <div class="text-content"><p>I'll check the existing code.</p></div><details class="tool-call" open><summary><span class="tool-name">Read</span><span class="tool-desc">src/main.py</span></summary><div class="tool-body"><pre><code class="language-json">{
   "file_path": "src/main.py"
 }</code></pre></div></details><details class="tool-result"><summary>Result — import pygame</summary><div class="result-body">import pygame
 
@@ -586,7 +586,7 @@ class TileMap:
             self.tiles[y][x] = tile_id
 </div></details>    <div class="timing-delta">⏱ responded in 11s</div>  </div></div>
 <div class="message role-user" id="msg-5">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:03:46</span><a class="msg-anchor" href="#msg-5" title="permalink">¶</a></div>        <div class="text-content"><p>Can we add a progress indicator for the long-running loop?</p></div>      </div></div>
-<div class="message role-asst" id="msg-6">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:03:57</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:572</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:4.1k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:461</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0026</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0099</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-6" title="permalink">¶</a></div>        <div class="text-content"><p>Done. The docstring follows Google style to match the rest of the module:</p>
+<div class="message role-asst" id="msg-6">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">19:03:57</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:572</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:4.1k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:461</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0033</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0124</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-6" title="permalink">¶</a></div>        <div class="text-content"><p>Done. The docstring follows Google style to match the rest of the module:</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python">def load_records(path: str, skip_header: bool = True) -&gt; list[dict]:
     &quot;&quot;&quot;Load CSV records from *path* into a list of dicts.
@@ -614,7 +614,7 @@ class TileMap:
   <div>Tool calls: <span>1</span></div>
   <div>Tokens: <span>8.3k</span></div>
   <div>Duration: <span>3m 52s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.0099</span></div>
+  <div>Est. cost: <span class="total-cost">$0.0124</span></div>
   <div>Session: <span>18b0c3e2-4af1-54...</span></div>
 </div>
 

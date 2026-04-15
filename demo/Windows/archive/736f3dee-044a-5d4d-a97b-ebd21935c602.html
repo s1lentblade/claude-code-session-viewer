@@ -519,7 +519,7 @@
   <details>
     <summary>
       <span class="cost-label">Session Cost Estimate</span>
-      <span class="cost-total" style="color:#3fb950">$0.0138</span>
+      <span class="cost-total" style="color:#3fb950">$0.0172</span>
       <span class="cost-label">&nbsp;|&nbsp; 8.9k tokens total &nbsp;|&nbsp; 4 assistant turns</span>
     </summary>
     <div class="cost-body">
@@ -527,22 +527,22 @@
       <div class="cost-cell">
         <div class="label">Input</div>
         <div class="value">1.1k</div>
-        <div class="sub">$0.00088</div>
+        <div class="sub">$0.0011</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Write</div>
         <div class="value">1.2k</div>
-        <div class="sub">$0.0012</div>
+        <div class="sub">$0.0015</div>
       </div>
       <div class="cost-cell">
         <div class="label">Cache Read</div>
         <div class="value">3.8k</div>
-        <div class="sub">$0.00030</div>
+        <div class="sub">$0.00038</div>
       </div>
       <div class="cost-cell">
         <div class="label">Output</div>
         <div class="value">2.8k</div>
-        <div class="sub">$0.0114</div>
+        <div class="sub">$0.0142</div>
       </div>
     </div>
     <div class="cost-models">Models: <span>claude-haiku-4-5</span></div>
@@ -553,7 +553,7 @@
 
 <div class="conversation">
 <div class="message role-user" id="msg-0">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:00:02</span><a class="msg-anchor" href="#msg-0" title="permalink">¶</a></div>        <div class="text-content"><p>Add pytest coverage for the ingredient parser</p></div>      </div></div>
-<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:00:10</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:242</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:1.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:830</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0047</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0047</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Here's a version that scales better — replacing the nested loop with a dict lookup brings this from O(n²) to O(n):</p>
+<div class="message role-asst" id="msg-1">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:00:10</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:242</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache write tokens">cw:1.2k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:830</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0059</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0059</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-1" title="permalink">¶</a></div>        <div class="text-content"><p>Here's a version that scales better — replacing the nested loop with a dict lookup brings this from O(n²) to O(n):</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python">def find_duplicates(items: list[str]) -&gt; list[str]:
     seen: dict[str, int] = {}
@@ -569,7 +569,7 @@
 
 <p>At 10× data volume the original would take ~100× longer; this stays linear.</p></div>    <div class="timing-delta">⏱ responded in 8s</div>  </div></div>
 <div class="message role-user" id="msg-2">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:01:12</span><a class="msg-anchor" href="#msg-2" title="permalink">¶</a></div>        <div class="text-content"><p>What happens if two processes write to the file simultaneously?</p></div>      </div></div>
-<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:01:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:328</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:558</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0025</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0072</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>        <div class="text-content"><p>Added the <code>--dry-run</code> flag — it short-circuits before any writes and prints what would change:</p>
+<div class="message role-asst" id="msg-3">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:01:16</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:328</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:558</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0031</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0090</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-3" title="permalink">¶</a></div>        <div class="text-content"><p>Added the <code>--dry-run</code> flag — it short-circuits before any writes and prints what would change:</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python">def run(args):
     changes = compute_changes(args.source, args.dest)
@@ -581,7 +581,7 @@
 
 <p>Run with <code>--dry-run</code> first to verify the diff, then without to apply. Both paths are covered by tests.</p></div>    <div class="timing-delta">⏱ responded in 4s</div>  </div></div>
 <div class="message role-user" id="msg-4">  <div class="role-badge"><span>You</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:04:06</span><a class="msg-anchor" href="#msg-4" title="permalink">¶</a></div>        <div class="text-content"><p>Perfect. Can we also handle the <code>--dry-run</code> flag?</p></div>      </div></div>
-<div class="message role-asst" id="msg-5">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:04:12</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:225</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.9k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:638</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0029</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0101</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-5" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Read</span></div>    <div class="text-content"><p>Let me look at how this is structured.</p></div><details class="tool-call" open><summary><span class="tool-name">Read</span><span class="tool-desc">src/main.py</span></summary><div class="tool-body"><pre><code class="language-json">{
+<div class="message role-asst" id="msg-5">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:04:12</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:225</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.9k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:638</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0036</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0126</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-5" title="permalink">¶</a></div>    <div class="tool-ribbon"><span class="tool-chip">Read</span></div>    <div class="text-content"><p>Let me look at how this is structured.</p></div><details class="tool-call" open><summary><span class="tool-name">Read</span><span class="tool-desc">src/main.py</span></summary><div class="tool-body"><pre><code class="language-json">{
   "file_path": "src/main.py"
 }</code></pre></div></details><details class="tool-result"><summary>Result — use std::collections::HashMap;</summary><div class="result-body">use std::collections::HashMap;
 use std::io::{self, BufRead};
@@ -603,7 +603,7 @@ pub fn parse_config(path: &amp;str) -&gt; HashMap&lt;String, String&gt; {
 <p>TypeError: expected str, got NoneType</p>
 <p>  File &quot;src/main.py&quot;, line 23, in process</p>
 <p>    return item.strip()</p></div>      </div></div>
-<div class="message role-asst" id="msg-8">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:05:52</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:300</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.9k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:814</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0036</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0138</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-8" title="permalink">¶</a></div>        <div class="text-content"><p>Here's the updated implementation:</p>
+<div class="message role-asst" id="msg-8">  <div class="role-badge"><span>Claude</span></div>  <div class="message-body">    <div class="msg-meta"><span class="timestamp">11:05:52</span><span class="token-badge" title="Token usage for this turn"><span class="tok-seg" title="input tokens">in:300</span><span class="tok-sep"> | </span><span class="tok-seg" title="cache read tokens">cr:1.9k</span><span class="tok-sep"> | </span><span class="tok-seg" title="output tokens">out:814</span><span class="tok-sep"> | </span><span class="turn-cost" style="color:#3fb950" title="estimated cost this turn">$0.0046</span><span class="tok-sep"> | </span><span class="cumul" title="cumulative session cost so far">&#x2211;$0.0172</span><span class="tok-sep"> | </span><span class="tok-seg" style="color:var(--text-dimmer)">haiku-4-5</span></span><a class="msg-anchor" href="#msg-8" title="permalink">¶</a></div>        <div class="text-content"><p>Here's the updated implementation:</p>
 
 <pre><span class="lang-tag">python</span><code class="language-python">def process(items: list) -&gt; list:
     &quot;&quot;&quot;Filter and normalise items, skipping None and blank strings.&quot;&quot;&quot;
@@ -621,7 +621,7 @@ pub fn parse_config(path: &amp;str) -&gt; HashMap&lt;String, String&gt; {
   <div>Tool calls: <span>1</span></div>
   <div>Tokens: <span>8.9k</span></div>
   <div>Duration: <span>5m 50s</span></div>
-  <div>Est. cost: <span class="total-cost">$0.0138</span></div>
+  <div>Est. cost: <span class="total-cost">$0.0172</span></div>
   <div>Session: <span>736f3dee-044a-5d...</span></div>
 </div>
 
