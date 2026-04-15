@@ -17,16 +17,31 @@ from datetime import datetime
 
 
 # ---------------------------------------------------------------------------
-# Pricing — $ per million tokens (API list prices, as of mid-2025)
+# Pricing — $ per million tokens (API list prices, Apr 2026)
+# More-specific prefixes must come before less-specific ones (first match wins).
+# Cache write uses the 5-minute TTL rate.
 # ---------------------------------------------------------------------------
 
 PRICING: dict[str, dict[str, float]] = {
     # Model slug prefix → {input, cache_write, cache_read, output}
-    "claude-opus-4":   {"input": 15.00, "cache_write": 18.75, "cache_read": 1.50,  "output": 75.00},
-    "claude-sonnet-4": {"input":  3.00, "cache_write":  3.75, "cache_read": 0.30,  "output": 15.00},
-    "claude-haiku-4":  {"input":  0.80, "cache_write":  1.00, "cache_read": 0.08,  "output":  4.00},
+    # Opus 4.6 / 4.5
+    "claude-opus-4-6":   {"input":  5.00, "cache_write":  6.25, "cache_read": 0.50,  "output": 25.00},
+    "claude-opus-4-5":   {"input":  5.00, "cache_write":  6.25, "cache_read": 0.50,  "output": 25.00},
+    # Opus 4.1 / 4 / 3
+    "claude-opus-4":     {"input": 15.00, "cache_write": 18.75, "cache_read": 1.50,  "output": 75.00},
+    "claude-opus-3":     {"input": 15.00, "cache_write": 18.75, "cache_read": 1.50,  "output": 75.00},
+    # Sonnet (all 4.x variants same price)
+    "claude-sonnet-4":   {"input":  3.00, "cache_write":  3.75, "cache_read": 0.30,  "output": 15.00},
+    "claude-sonnet-3-7": {"input":  3.00, "cache_write":  3.75, "cache_read": 0.30,  "output": 15.00},
+    # Haiku 4.5
+    "claude-haiku-4-5":  {"input":  1.00, "cache_write":  1.25, "cache_read": 0.10,  "output":  5.00},
+    # Haiku 3.5 / 4 (original)
+    "claude-haiku-4":    {"input":  0.80, "cache_write":  1.00, "cache_read": 0.08,  "output":  4.00},
+    "claude-haiku-3-5":  {"input":  0.80, "cache_write":  1.00, "cache_read": 0.08,  "output":  4.00},
+    # Haiku 3
+    "claude-haiku-3":    {"input":  0.25, "cache_write":  0.30, "cache_read": 0.03,  "output":  1.25},
     # Fallback
-    "default":         {"input":  3.00, "cache_write":  3.75, "cache_read": 0.30,  "output": 15.00},
+    "default":           {"input":  3.00, "cache_write":  3.75, "cache_read": 0.30,  "output": 15.00},
 }
 
 def _get_rates(model: str) -> dict[str, float]:

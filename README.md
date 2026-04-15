@@ -255,11 +255,14 @@ Each folder name is the working directory path with `/` replaced by `--`. If `$C
 
 Token counts are read from the JSONL metadata. Costs are estimated from published API list prices — treat them as approximations.
 
-| Model | Input | Cache write | Cache read | Output |
-|-------|-------|-------------|------------|--------|
-| Claude Opus 4 | $15/MTok | $18.75/MTok | $1.50/MTok | $75/MTok |
-| Claude Sonnet 4 | $3/MTok | $3.75/MTok | $0.30/MTok | $15/MTok |
-| Claude Haiku 4 | $0.80/MTok | $1.00/MTok | $0.08/MTok | $4/MTok |
+| Model | Input | Cache write (5 min) | Cache read | Output |
+|-------|-------|---------------------|------------|--------|
+| Claude Opus 4.6 / 4.5 | $5/MTok | $6.25/MTok | $0.50/MTok | $25/MTok |
+| Claude Opus 4.1 / 4 | $15/MTok | $18.75/MTok | $1.50/MTok | $75/MTok |
+| Claude Sonnet 4.x | $3/MTok | $3.75/MTok | $0.30/MTok | $15/MTok |
+| Claude Haiku 4.5 | $1/MTok | $1.25/MTok | $0.10/MTok | $5/MTok |
+| Claude Haiku 3.5 | $0.80/MTok | $1.00/MTok | $0.08/MTok | $4/MTok |
+| Claude Haiku 3 | $0.25/MTok | $0.30/MTok | $0.03/MTok | $1.25/MTok |
 
 ---
 
