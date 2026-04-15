@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Session data (never commit your real sessions)
+*.jsonl
+_check.js
+
+# Real workflow output at repo root — root-relative so demo/ is unaffected
+/RAWEVERYTHING/
+/PROCESSED/
+/macOS/
+/Claude.ai/
+/index.html
+/archive/
+/data/
+
+# Allow demo JSONL fixtures and demo archives under demo/
+!demo/RAWEVERYTHING/**/*.jsonl
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dev scripts, drafts, and screenshot outputs — contain hardcoded local paths, not for public use
+/dev/
+
+# Local-only docs (planning specs, internal notes)
+/docs/superpowers/
+
+# Personal data — generated from real sessions, never commit
+insights-narrative.json
+# Allow demo copy
+!demo/insights-narrative.json
+
+# Scratch / draft files
+syntax-preview.html
+*liked*.html
+.impeccable.md

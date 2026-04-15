@@ -1,0 +1,307 @@
+{
+  "generated": "2026-04-15T12:00:00Z",
+  "views": {
+    "weekly": [
+      {
+        "value": "$6.72",
+        "label": "avg per active week",
+        "detail": "Your 38 spending weeks average $6.72 each — a modest, steady pace. Spending has stayed relatively level after an initial ramp, with occasional spikes tied to project pushes. Nothing alarming, but the -7% recent trend means usage is cooling slightly."
+      },
+      {
+        "value": "$21.35",
+        "label": "peak week (Mar 2–8)",
+        "detail": "The week of Mar 2–8 was your heaviest at $21.35 — 3.2× your average. That points to a focused project sprint, most likely concentrated in the learn-rust or mcp-server work that dominates your all-time spend. After that week, usage settled back toward baseline."
+      },
+      {
+        "value": "$2.15",
+        "label": "cost per paid session",
+        "detail": "All 119 sessions carried real API cost, averaging $2.15 each. That's a healthy middle ground — you're not burning money on trivial one-liners, but you're also not locked into the $10+ sessions that only make sense for the deepest architectural work."
+      },
+      {
+        "value": "-7%",
+        "label": "8-week spend trend",
+        "detail": "Recent 4-week spend is running 7% below the prior 4 weeks. A minor cooldown, not a dropout — you're still active on multiple projects. Worth watching if it continues another month; could signal a natural plateau after the Mar push."
+      }
+    ],
+    "cumul": [
+      {
+        "value": "$255",
+        "label": "total spend (8.5 months)",
+        "detail": "You've spent $255.41 across 119 sessions since Aug 4, 2025. The spend is spread over 8.5 months — no single month dominates — which is the mark of a tool you've genuinely integrated into your workflow rather than sampled."
+      },
+      {
+        "value": "$1.00",
+        "label": "daily burn rate",
+        "detail": "At $1.00/day averaged over all 256 days, your run rate is remarkably low. That's below the cost of a coffee. Even on your busiest days you're well under $5, which puts your actual ceiling well within typical subscription pricing."
+      },
+      {
+        "value": "$364",
+        "label": "projected annual",
+        "detail": "Your current burn rate projects to $364/year. That's for 119 sessions worth of real work — Rust, games, infrastructure, an MCP server. The cost-to-output ratio is solidly in your favour, particularly when stacked against the Opus sessions that drove most of the spend."
+      },
+      {
+        "value": "3.1",
+        "label": "sessions per week",
+        "detail": "Across 38 active weeks, you averaged 3.1 sessions per week. You're not daily, but you're consistent — multiple meaningful sessions every week rather than sporadic bursts. That cadence is hard to sustain; the 11-day active streak confirms it."
+      }
+    ],
+    "days": [
+      {
+        "value": "Tuesday",
+        "label": "most active day",
+        "detail": "Tuesday sees the highest session volume, with roughly 20% more sessions than the weekly average. Monday and Wednesday cluster close behind. Your pattern is classic mid-week concentration — the exploratory energy of the first workday has worn off and you're in execution mode."
+      },
+      {
+        "value": "$4.82",
+        "label": "avg cost on Fridays",
+        "detail": "Friday sessions average $4.82 each — more than double your $2.15 overall average. End-of-week sessions tend to be longer, likely wrapping up a thread started earlier. The pattern suggests you use Fridays to push through bigger, context-heavy tasks before the weekend."
+      },
+      {
+        "value": "78%",
+        "label": "sessions on weekdays",
+        "detail": "78% of your sessions fall Monday–Friday. Weekend usage exists but is light — you're not taking work home much. The weekend sessions that do happen tend to be shorter exploratory sessions, not the heavy coding work that marks your weekday peak."
+      },
+      {
+        "value": "Friday",
+        "label": "highest-cost day",
+        "detail": "Despite mid-week leading on session count, Friday leads on total weekly cost due to the outsized per-session average. If you want to optimize your Opus budget, shifting some Friday sessions to earlier in the week could make those big sessions feel less like a splurge."
+      }
+    ],
+    "hours": [
+      {
+        "value": "20:00",
+        "label": "peak hour",
+        "detail": "8 PM is your most active hour with 21 sessions — nearly 18% of all sessions land in a single hour. Evening work is your dominant mode. The hour just before or after wrapping up the day is when you reach for Claude most."
+      },
+      {
+        "value": "48%",
+        "label": "evening sessions (7–10 PM)",
+        "detail": "57 of 119 sessions — nearly half — fall in the 7–10 PM window. This isn't occasional late-night coding; it's a consistent pattern. You've effectively built an evening workflow around these sessions."
+      },
+      {
+        "value": "17%",
+        "label": "morning sessions",
+        "detail": "Only about 20 sessions before noon. You're not a morning Claude user — the slow morning ramp suggests you use early hours for other work and bring Claude in once a problem has fully crystallized in your mind."
+      },
+      {
+        "value": "10%",
+        "label": "late-night sessions (10 PM–2 AM)",
+        "detail": "About 12 sessions happen after 10 PM — late-night pushes that aren't the norm but aren't rare either. These tend to be the kind of focused deep-work sessions that happen when the world goes quiet."
+      }
+    ],
+    "projects": [
+      {
+        "value": "learn-rust",
+        "label": "top project by spend",
+        "detail": "learn-rust leads at $56.95 — 22.3% of all-time spend. Rust has a notoriously steep learning curve and that's reflected here: you burned real tokens on ownership, lifetimes, and systems concepts. The cost is justified if it stuck."
+      },
+      {
+        "value": "60%",
+        "label": "top-3 share of spend",
+        "detail": "learn-rust, mcp-server, and pygame-game together account for $153.97 — 60% of total spend. Three projects doing most of the heavy lifting is a healthy concentration: focused enough to show real depth, diverse enough not to be a single-point dependency."
+      },
+      {
+        "value": "10",
+        "label": "active projects",
+        "detail": "You've touched 10 distinct projects in 8.5 months. That's broad enough to suggest genuine curiosity across domains — Rust, game dev, home infrastructure, writing tools — while still spending enough in each to produce real output rather than just kicking tyres."
+      },
+      {
+        "value": "mcp-server",
+        "label": "2nd project, $56.07",
+        "detail": "mcp-server is essentially tied with learn-rust at $56.07. Building your own MCP server is infrastructure-level work — it compounds by making future sessions more capable. That spend is likely the highest-leverage $56 in your history."
+      }
+    ],
+    "models": [
+      {
+        "value": "89%",
+        "label": "spend on Opus",
+        "detail": "Opus accounted for $227.30 of your $255.41 total — 89% — across just 21 sessions. You're using Opus selectively and correctly: 18% of sessions, nearly all the cost. The 21 Opus sessions averaged $10.82 each, which means you were running genuinely heavy context and tool chains."
+      },
+      {
+        "value": "67%",
+        "label": "sessions on Sonnet",
+        "detail": "80 of 119 sessions ran on Sonnet at $27.93 total ($0.35/session avg). You've found the right balance: Sonnet for the bulk of interactive, medium-complexity work. At that price you can afford to think freely without watching the meter."
+      },
+      {
+        "value": "$10.82",
+        "label": "avg Opus session cost",
+        "detail": "Your Opus sessions average $10.82 — 30× a typical Sonnet session. That gap is actually healthy: it means your Opus sessions are substantively different from your Sonnet sessions, not just redundant re-runs on a more expensive model."
+      },
+      {
+        "value": "Haiku ×18",
+        "label": "quick sessions",
+        "detail": "18 Haiku sessions at $0.19 total — essentially free. These are clearly scripted, automated, or near-zero-context interactions. Haiku is doing its job: absorbing the workload that would otherwise inflate your Sonnet bill."
+      }
+    ],
+    "heatmap": [
+      {
+        "value": "114",
+        "label": "active days (of 256)",
+        "detail": "You were active on 114 of 256 days — 44.5%. That's a strong active-day ratio for a developer tool used over 8+ months. Many tools plateau at 20–30% after the initial honeymoon; staying above 40% through summer, autumn, and winter suggests genuine integration."
+      },
+      {
+        "value": "11 days",
+        "label": "longest active streak",
+        "detail": "Your longest consecutive run was 11 days. That streak almost certainly maps to the Mar 2–8 peak week and surrounding days — an extended push where you were reaching for Claude every single day. Sustaining double-digit streaks requires genuine daily workflow integration."
+      },
+      {
+        "value": "Mar 2026",
+        "label": "busiest month",
+        "detail": "March 2026 was your peak month by both sessions and spend. The peak week (Mar 2–8) sits in the middle of it. Post-March spend has softened slightly, which could reflect that a major project wrapped — or simply a natural cooldown after an intense push."
+      },
+      {
+        "value": "$2.24",
+        "label": "avg spend on active days",
+        "detail": "On days you use Claude, you average $2.24 in spend. That's above your $1.00/day overall average because you're not active every day — when you do open Claude, you're doing real work, not just poking at it. Quality over quantity."
+      }
+    ],
+    "tokens": [
+      {
+        "value": "73.5%",
+        "label": "cache hit rate",
+        "detail": "18.6M of your 25.3M input+cache tokens were served from cache — a 73.5% hit rate. That's excellent. It means your sessions have significant repeated context (long files, project state, prior conversation) that the cache is successfully absorbing and re-using."
+      },
+      {
+        "value": "~$78",
+        "label": "estimated cache savings",
+        "detail": "At current pricing, serving 18.6M tokens from cache instead of as fresh input saved roughly $78 compared to no-cache pricing. That offsets about 30% of your total $255 spend. The cache write cost of ~$17 is well worth the return."
+      },
+      {
+        "value": "0.38",
+        "label": "output / input ratio",
+        "detail": "For every token you input, Claude generates 0.38 tokens in response. That's on the lower end — your sessions are input-heavy, with large context windows and tool outputs that drive most of the token cost. You're feeding Claude a lot and getting focused, efficient responses."
+      },
+      {
+        "value": "30.6M",
+        "label": "total tokens processed",
+        "detail": "119 sessions consumed 30.6M total tokens: 6.7M input, 2.8M cache writes, 18.6M cache reads, 2.5M output. That averages 257K tokens per session — comfortably in the medium-to-large range that justifies Sonnet for most and Opus for the biggest."
+      }
+    ],
+    "activity": [
+      {
+        "value": "coding",
+        "label": "most common activity",
+        "detail": "62 of 119 sessions (52%) involved file edits — your primary mode is building things, not just asking questions. More than half your sessions left a diff behind. That's the hallmark of a practitioner workflow rather than a research one."
+      },
+      {
+        "value": "25%",
+        "label": "pure conversation sessions",
+        "detail": "30 sessions (25%) had no tool calls at all — pure back-and-forth dialogue. That's a healthy minority: you use Claude to think through problems, not just to execute them. The 1-in-4 ratio suggests you're bringing architectural and conceptual questions, not just implementation requests."
+      },
+      {
+        "value": "75%",
+        "label": "tool-using sessions",
+        "detail": "89 sessions used at least one tool. That's a 3-in-4 rate of active, tool-driven sessions. You're not just chatting — the majority of your Claude time is spent with real files, real commands, and real outputs, which explains the above-average per-session cost."
+      },
+      {
+        "value": "coding",
+        "label": "most expensive activity",
+        "detail": "Coding sessions drive the bulk of spend as expected — longer context, more tool rounds, larger outputs. The 16% exploration sessions (Read/Glob/Grep with no edits) are notably cheap, suggesting you use lightweight lookup sessions before the heavier coding work begins."
+      }
+    ],
+    "mcp": [
+      {
+        "value": "0",
+        "label": "MCP tool calls",
+        "detail": "No MCP tools appear in any of your 119 sessions. That's not a criticism — MCP is still relatively new and requires server setup. Your mcp-server project suggests you're building MCP infrastructure, which means you're likely on the provider side rather than the consumer side for now."
+      },
+      {
+        "value": "none",
+        "label": "MCP servers used",
+        "detail": "You've built an MCP server (your second-highest spend project) without yet consuming external MCP servers yourself. That's a meaningful signal about where you sit in the ecosystem: you're early enough to be building the tooling, not just using it."
+      },
+      {
+        "value": "mcp-server",
+        "label": "likely next step",
+        "detail": "Once your mcp-server project ships, wiring it into Claude Code would close the loop and likely show up here as your first MCP usage. The $56 you've spent building it is the setup cost; recurring sessions using it would have much lower marginal cost."
+      }
+    ]
+  },
+  "analysis": {
+    "headline": "A deliberate, build-first Claude user who's found their rhythm after 8 months of consistent cross-platform use.",
+    "generated": "2026-04-15",
+    "sections": [
+      {
+        "title": "Eight months in, the habit held",
+        "body": "You've been active on 114 of 256 days since Aug 4, 2025 — a 44.5% active-day rate that's held steady across multiple seasons. Most developer tool adoption peaks in the first month then fades; yours didn't. The 11-day consecutive streak and the 3.1 sessions/week cadence across 38 active weeks confirm this is no longer an experiment — it's infrastructure. The March 2026 push (your peak week at $21.35) shows you can shift into high gear when a project demands it.",
+        "metrics": [
+          { "value": "114", "label": "active days" },
+          { "value": "44.5%", "label": "activity rate" },
+          { "value": "11 days", "label": "longest streak" }
+        ]
+      },
+      {
+        "title": "Two projects absorbing half the budget",
+        "body": "learn-rust and mcp-server together account for $113.02 — 44% of all-time spend — across two completely different domains. Rust is a learning investment with long-term compounding value; mcp-server is infrastructure that pays dividends as soon as it ships. These aren't frivolous experiments: both represent areas where deep, token-heavy context is the right approach. The remaining 8 projects share $142 between them, suggesting a healthy portfolio structure rather than one project crowding out everything else.",
+        "metrics": [
+          { "value": "$113", "label": "learn-rust + mcp-server" },
+          { "value": "44%", "label": "of total spend" },
+          { "value": "10", "label": "active projects" }
+        ]
+      },
+      {
+        "title": "You work at night, and you work hard",
+        "body": "48% of sessions fall in the 7–10 PM window, with 8 PM as your single busiest hour (21 sessions, 18% of all sessions). This isn't occasional late-night debugging — it's your primary operating window. Friday stands out further: $4.82/session average versus $2.15 overall, meaning Friday evenings are when the biggest, most context-heavy sessions happen. You're not winding down at the end of the week; you're pushing through.",
+        "metrics": [
+          { "value": "48%", "label": "sessions 7–10 PM" },
+          { "value": "20:00", "label": "peak hour" },
+          { "value": "$4.82", "label": "Friday avg/session" }
+        ]
+      },
+      {
+        "title": "A builder's portfolio: Rust, games, infra, writing",
+        "body": "Your 10 projects span Rust learning, game development (pygame-game at $40.95), home infrastructure (homelab at $25.25), note-taking tools, and MCP server development. This isn't a single-stack practitioner grinding out one kind of work — you're using Claude to explore genuinely different domains, each with different token profiles. The breadth means your insight cards across projects will reflect different usage patterns rather than one shape repeated 10 times.",
+        "metrics": [
+          { "value": "learn-rust", "label": "#1 project" },
+          { "value": "mcp-server", "label": "#2 project" },
+          { "value": "pygame-game", "label": "#3 project" }
+        ]
+      },
+      {
+        "title": "Mostly building, occasionally thinking",
+        "body": "52% of sessions involved file edits — the majority mode is active construction. 25% were pure conversation sessions with no tools, and 16% were read-heavy exploration. Automation (Bash-only, no edits) accounts for 7%. That breakdown is well-calibrated: you're using Claude for the full spectrum of a developer's day, but anchored in the coding work that delivers the most value per session. The 1-in-4 conversation rate is high enough to suggest real design dialogue, not just implementation handoff.",
+        "metrics": [
+          { "value": "52%", "label": "coding sessions" },
+          { "value": "25%", "label": "conversation sessions" },
+          { "value": "75%", "label": "tool-using sessions" }
+        ]
+      },
+      {
+        "title": "MCP: you're on the supply side for now",
+        "body": "Zero MCP tool calls across 119 sessions — but your mcp-server project is your second-highest spend at $56.07. You're not consuming MCP servers; you're building one. That's a meaningful distinction: you understand the protocol well enough to implement it, which puts you ahead of most users who will only ever be consumers. Once the server ships and you wire it into Claude Code, this tab will light up fast.",
+        "metrics": [
+          { "value": "0", "label": "MCP calls to date" },
+          { "value": "$56", "label": "spent building MCP server" },
+          { "value": "1", "label": "MCP server in development" }
+        ]
+      },
+      {
+        "title": "Model allocation is well-calibrated",
+        "body": "Opus on 21 sessions (18%) at $10.82/session avg; Sonnet on 80 sessions (67%) at $0.35/session avg; Haiku on 18 sessions (15%) at under $0.01/session. The 30× cost gap between Opus and Sonnet sessions reflects genuinely different session types, not just reach-for-the-premium-model habit. Your Opus sessions are earning their premium. Haiku at 15% of sessions for 0.1% of spend shows you're routing the truly trivial interactions correctly.",
+        "metrics": [
+          { "value": "89%", "label": "spend on Opus" },
+          { "value": "67%", "label": "sessions on Sonnet" },
+          { "value": "30×", "label": "Opus vs Sonnet cost/session" }
+        ]
+      },
+      {
+        "title": "Cache performance is genuinely excellent",
+        "body": "73.5% of your input tokens were served from cache — 18.6M out of 25.3M. That saved roughly $78 versus no-cache pricing, offsetting about 30% of your total $255 spend. Your 0.38 output/input ratio confirms your sessions are input-heavy: large context windows, repeated file state, long tool outputs. The cache is doing exactly what it's designed to do, and your usage pattern happens to maximise it.",
+        "metrics": [
+          { "value": "73.5%", "label": "cache hit rate" },
+          { "value": "~$78", "label": "estimated savings" },
+          { "value": "0.38", "label": "output/input ratio" }
+        ]
+      },
+      {
+        "title": "One thing to change: schedule your Opus sessions",
+        "body": "Your Opus sessions are well-justified individually, but they're unplanned — you reach for Opus when a session gets hard rather than starting with it deliberately. The result: 21 sessions averaging $10.82 that may have included significant Sonnet-level warm-up turns at Opus prices. Consider starting deep architectural sessions on Opus from turn one, and keeping a short mental checklist of what qualifies (new system design, multi-file refactors, debugging with unknown root cause). The Haiku and Sonnet discipline is already there — apply the same thinking to the Opus threshold.",
+        "metrics": [
+          { "value": "21", "label": "Opus sessions" },
+          { "value": "$10.82", "label": "avg Opus cost" },
+          { "value": "$227", "label": "Opus total" }
+        ]
+      }
+    ]
+  }
+}
