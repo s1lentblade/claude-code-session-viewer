@@ -93,6 +93,7 @@ def sync_jsonl(dest: Path) -> None:
     dest.mkdir(parents=True, exist_ok=True)
     copied = skipped = 0
 
+    sa_copied = 0
     for jsonl in sorted(source.glob("*/*.jsonl")):
         project_folder = jsonl.parent.name
         out_dir  = dest / project_folder
@@ -105,7 +106,21 @@ def sync_jsonl(dest: Path) -> None:
         else:
             skipped += 1
 
-    print(f"Sync: {copied} copied, {skipped} already up-to-date  ->  {dest}")
+        # Sync sibling subagents/ folder (contains flat agent-{id}.jsonl + .meta.json files)
+        sa_src = jsonl.parent / jsonl.stem / "subagents"
+        if sa_src.is_dir():
+            sa_dst = out_dir / jsonl.stem / "subagents"
+            sa_dst.mkdir(parents=True, exist_ok=True)
+            for sa_file in sa_src.iterdir():
+                if not sa_file.is_file():
+                    continue
+                sa_out = sa_dst / sa_file.name
+                if not sa_out.exists() or sa_file.stat().st_mtime > sa_out.stat().st_mtime:
+                    shutil.copy2(sa_file, sa_out)
+                    sa_copied += 1
+
+    extra = f", {sa_copied} subagent files" if sa_copied else ""
+    print(f"Sync: {copied} copied, {skipped} already up-to-date{extra}  ->  {dest}")
 
 
 def decode_project_folder(name: str) -> str:
@@ -332,6 +347,57 @@ def quick_scan(jsonl_path: Path, mod) -> dict:
     except Exception:
         pass
 
+    # ── Roll up subagent usage from sibling {sid}/subagents/ folder ──────────
+    # Subagent JSONLs contain their own API usage — not reflected in the parent.
+    # The folder is flat regardless of nesting depth, so one pass covers all descendants.
+    sa_dir = jsonl_path.parent / jsonl_path.stem / "subagents"
+    subagent_count = 0
+    if sa_dir.is_dir():
+        for sa_file in sa_dir.glob("*.jsonl"):
+            subagent_count += 1
+            try:
+                with open(sa_file, encoding="utf-8", errors="replace") as f:
+                    for raw in f:
+                        raw = raw.strip()
+                        if not raw:
+                            continue
+                        try:
+                            sobj = json.loads(raw)
+                        except Exception:
+                            continue
+                        if sobj.get("type") != "assistant":
+                            continue
+                        smsg   = sobj.get("message", {})
+                        smodel = smsg.get("model", "")
+                        if smodel == "<synthetic>":
+                            continue
+                        if smodel:
+                            models.add(smodel)
+                        susage = smsg.get("usage", {})
+                        if not susage:
+                            continue
+                        agg["input"]       += susage.get("input_tokens", 0)
+                        agg["cache_write"] += susage.get("cache_creation_input_tokens", 0)
+                        agg["cache_read"]  += susage.get("cache_read_input_tokens", 0)
+                        agg["output"]      += susage.get("output_tokens", 0)
+                        agg["turns"]       += 1
+                        try:
+                            tc = mod.calc_cost(susage, smodel or next(iter(models), ""))
+                            total_cost += tc
+                            if smodel:
+                                if smodel not in model_costs:
+                                    model_costs[smodel] = 0.0
+                                    model_tokens[smodel] = {"input": 0, "cache_write": 0, "cache_read": 0, "output": 0}
+                                model_costs[smodel] += tc
+                                model_tokens[smodel]["input"]       += susage.get("input_tokens", 0)
+                                model_tokens[smodel]["cache_write"] += susage.get("cache_creation_input_tokens", 0)
+                                model_tokens[smodel]["cache_read"]  += susage.get("cache_read_input_tokens", 0)
+                                model_tokens[smodel]["output"]      += susage.get("output_tokens", 0)
+                        except Exception:
+                            pass
+            except Exception:
+                pass
+
     # Pick best title
     if custom_title:
         title = custom_title
@@ -392,6 +458,7 @@ def quick_scan(jsonl_path: Path, mod) -> dict:
         "model_tokens":    model_tokens,
         "msg_hours":       msg_hour_counts,   # 24-element list: user msgs per hour
         "tok_hours":       tok_hour_counts,   # 24-element list: output tokens per hour
+        "subagent_count":  subagent_count,
     }
 
 

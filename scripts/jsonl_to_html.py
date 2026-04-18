@@ -24,7 +24,8 @@ from datetime import datetime
 
 PRICING: dict[str, dict[str, float]] = {
     # Model slug prefix → {input, cache_write, cache_read, output}
-    # Opus 4.6 / 4.5
+    # Opus 4.7 / 4.6 / 4.5 — more-specific prefixes must precede "claude-opus-4"
+    "claude-opus-4-7":   {"input":  5.00, "cache_write":  6.25, "cache_read": 0.50,  "output": 25.00},
     "claude-opus-4-6":   {"input":  5.00, "cache_write":  6.25, "cache_read": 0.50,  "output": 25.00},
     "claude-opus-4-5":   {"input":  5.00, "cache_write":  6.25, "cache_read": 0.50,  "output": 25.00},
     # Opus 4.1 / 4 / 3
@@ -278,6 +279,19 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   .tool-body {{ padding: 10px; background: var(--bg-tool); border-top: 1px solid var(--border-tool); font-size: 12px; }}
   .tool-body pre {{ border-radius: 4px; overflow-x: auto; margin: 0; padding: 0; }}
   .tool-body pre code.hljs {{ border-radius: 4px; font-size: 11px; white-space: pre-wrap; word-break: break-word; }}
+
+  /* ── Subagent inline block ── */
+  .subagent-block {{ margin: 10px 0; border: 1px solid var(--border-tool); border-radius: 8px; background: var(--bg-tool); overflow: hidden; }}
+  .subagent-block > summary {{ padding: 9px 12px; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 10px; list-style: none; font-size: 12px; border-bottom: 1px solid transparent; }}
+  .subagent-block[open] > summary {{ border-bottom-color: var(--border-tool); }}
+  .subagent-block > summary::before {{ content: "▶"; font-size: 9px; color: var(--text-dimmer); }}
+  .subagent-block[open] > summary::before {{ content: "▼"; }}
+  .sa-badge {{ display: inline-block; padding: 2px 7px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--tool-accent); color: var(--bg); border-radius: 3px; }}
+  .sa-type {{ font-weight: 600; color: var(--tool-accent); font-family: var(--font-mono); font-size: 11px; }}
+  .sa-desc {{ flex: 1; color: var(--text-dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }}
+  .sa-stats {{ color: var(--text-dim); font-family: var(--font-mono); font-size: 10.5px; flex-shrink: 0; }}
+  .sa-body {{ padding: 4px 14px 10px; border-left: 2px solid var(--tool-accent); margin: 0 10px 10px; background: var(--bg); border-radius: 0 0 6px 6px; }}
+  .sa-body .message {{ margin: 8px 0; }}
 
   /* ── Tool result ── */
   .tool-result {{ margin: 6px 0; border: 1px solid var(--border-result); border-radius: 6px; overflow: hidden; }}
@@ -1148,6 +1162,12 @@ def render_tool_use_block(block: dict, tool_map: dict) -> str:
     if name == 'AskUserQuestion':
         return render_ask_user_question(inp, tool_id, tool_map)
 
+    # Agent tool → inline the subagent transcript if we have one loaded
+    if name == 'Agent':
+        agent_id = _agent_id_by_tool.get(tool_id)
+        if agent_id and agent_id in _subagent_entries:
+            return render_subagent_block(agent_id, inp, tool_map.get(tool_id))
+
     desc = ''
     for key in ('command', 'file_path', 'pattern', 'path', 'query', 'skill', 'prompt'):
         if key in inp:
@@ -1181,6 +1201,102 @@ def render_tool_use_block(block: dict, tool_map: dict) -> str:
         f'<div class="tool-body"><pre><code class="language-json">{esc_inp}</code></pre></div>'
         f'</details>'
         + result_html
+    )
+
+
+def render_subagent_block(agent_id: str, invocation_input: dict, tool_result_content) -> str:
+    """Render a subagent's full transcript inline, in place of the usual tool_use/result pair."""
+    entries = _subagent_entries.get(agent_id, [])
+    meta    = _subagent_meta.get(agent_id, {})
+
+    subtype = invocation_input.get('subagent_type') or meta.get('agentType') or ''
+    desc    = invocation_input.get('description')    or meta.get('description') or ''
+    prompt  = invocation_input.get('prompt', '')
+
+    cost, toks = subagent_session_stats(agent_id)
+
+    # Build a tool_map local to this subagent so its own tool_use/tool_result pairs resolve.
+    sub_tool_map = build_tool_map(entries)
+
+    # Filter to visible user/assistant entries the same way convert() does.
+    def is_real_user_local(e: dict) -> bool:
+        if e.get('isMeta'):
+            return False
+        content = e.get('message', {}).get('content', '')
+        if isinstance(content, str):
+            if '<local-command-caveat>' in content:
+                return False
+            return bool(content.strip())
+        if isinstance(content, list):
+            for b in content:
+                if isinstance(b, dict):
+                    if b.get('type') == 'text' and b.get('text', '').strip():
+                        return True
+                    if b.get('type') == 'tool_result':
+                        return True
+        return False
+
+    def is_real_asst_local(e: dict) -> bool:
+        content = e.get('message', {}).get('content', [])
+        if not isinstance(content, list):
+            return False
+        return any(isinstance(b, dict) and b.get('type') in ('text', 'tool_use') for b in content)
+
+    visible: list[dict] = []
+    for e in entries:
+        t = e.get('type')
+        if t == 'user' and is_real_user_local(e):
+            visible.append(e)
+        elif t == 'assistant' and is_real_asst_local(e):
+            visible.append(e)
+
+    # Per-turn / cumulative cost for token badges (local to the subagent)
+    cost_by_uuid: dict[str, tuple[float, float]] = {}
+    cumul = 0.0
+    for e in entries:
+        if e.get('type') != 'assistant':
+            continue
+        msg   = e.get('message', {})
+        model = msg.get('model', '')
+        if model == '<synthetic>':
+            continue
+        usage = msg.get('usage') or {}
+        if not usage:
+            continue
+        try:
+            tc = calc_cost(usage, model)
+        except Exception:
+            tc = 0.0
+        cumul += tc
+        cost_by_uuid[e.get('uuid', '')] = (tc, cumul)
+
+    msg_parts: list[str] = []
+    for idx, e in enumerate(visible):
+        uid = e.get('uuid', '')
+        tc, cc = cost_by_uuid.get(uid, (0.0, 0.0))
+        html = render_message(e, sub_tool_map, turn_cost=tc, cumul_cost=cc,
+                              msg_idx=idx, time_delta=None)
+        if html:
+            msg_parts.append(html)
+
+    # Header: badge + description + running total
+    summary_bits = []
+    if subtype:
+        summary_bits.append(f'<span class="sa-type">{_e(subtype)}</span>')
+    if desc:
+        summary_bits.append(f'<span class="sa-desc">{_e(desc)}</span>')
+    summary_bits.append(f'<span class="sa-stats">{fmt_tok(toks)} · {fmt_cost(cost)}</span>')
+
+    return (
+        f'<details class="subagent-block" open>'
+        f'<summary>'
+        f'<span class="sa-badge">Subagent</span>'
+        + ''.join(summary_bits)
+        + f'</summary>'
+        f'<div class="sa-body">'
+        + ''.join(msg_parts)
+        + f'</div>'
+        f'</details>'
     )
 
 
@@ -1278,6 +1394,146 @@ def build_tool_map(entries: list) -> dict:
                 if tid:
                     tool_map[tid] = block.get('content', '')
     return tool_map
+
+
+# ---------------------------------------------------------------------------
+# Subagent support
+#
+# When Claude Code dispatches a subagent via the Agent tool, the subagent's
+# conversation is logged in a sibling file:
+#   projects/{proj}/{sessionId}/subagents/agent-{agentId}.jsonl
+# with a {agentType, description} sidecar at .meta.json.
+#
+# The subagents folder is flat regardless of nesting depth — a sub-subagent
+# spawned from a subagent lives in the same folder, not a nested one. The
+# tool_use -> agentId correlation is: parent's tool_result entry has
+# toolUseResult.agentId which matches the agent-{id}.jsonl filename.
+#
+# Module state is populated once per convert() call via load_subagent_context().
+# ---------------------------------------------------------------------------
+
+_subagent_entries: dict[str, list[dict]] = {}   # agentId -> entries
+_subagent_meta:    dict[str, dict]       = {}   # agentId -> {agentType, description}
+_agent_id_by_tool: dict[str, str]        = {}   # tool_use_id -> agentId (flat, all depths)
+
+
+def build_agent_id_map(entries: list) -> dict:
+    """tool_use_id -> agentId for every Agent tool call whose result has toolUseResult.agentId."""
+    out: dict[str, str] = {}
+    for e in entries:
+        if e.get('type') != 'user':
+            continue
+        tur = e.get('toolUseResult')
+        if not isinstance(tur, dict):
+            continue
+        aid = tur.get('agentId')
+        if not aid:
+            continue
+        content = e.get('message', {}).get('content', [])
+        if isinstance(content, list):
+            for b in content:
+                if isinstance(b, dict) and b.get('type') == 'tool_result':
+                    tid = b.get('tool_use_id', '')
+                    if tid:
+                        out[tid] = aid
+                        break
+    return out
+
+
+def load_subagent_context(session_jsonl: Path) -> None:
+    """Populate module-level subagent state by scanning the sibling subagents/ folder."""
+    _subagent_entries.clear()
+    _subagent_meta.clear()
+    _agent_id_by_tool.clear()
+
+    sa_dir = session_jsonl.parent / session_jsonl.stem / "subagents"
+    if not sa_dir.is_dir():
+        return
+
+    for sa_file in sorted(sa_dir.glob("*.jsonl")):
+        stem = sa_file.stem
+        agent_id = stem[len("agent-"):] if stem.startswith("agent-") else stem
+        entries: list[dict] = []
+        try:
+            with open(sa_file, encoding='utf-8', errors='replace') as fh:
+                for raw in fh:
+                    raw = raw.strip()
+                    if not raw:
+                        continue
+                    try:
+                        entries.append(json.loads(raw))
+                    except Exception:
+                        pass
+        except Exception:
+            continue
+        _subagent_entries[agent_id] = entries
+
+        meta_path = sa_file.parent / (stem + '.meta.json')
+        if meta_path.exists():
+            try:
+                _subagent_meta[agent_id] = json.loads(meta_path.read_text(encoding='utf-8'))
+            except Exception:
+                pass
+
+        # Index Agent tool_use -> agentId mappings found INSIDE this subagent too
+        # (so recursive rendering resolves correctly).
+        for tid, aid in build_agent_id_map(entries).items():
+            _agent_id_by_tool[tid] = aid
+
+
+def aggregate_subagent_usage(agg: dict, calc_cost_fn) -> tuple[float, set]:
+    """Walk every loaded subagent and add its usage to agg. Return (added_cost, models_seen)."""
+    added = 0.0
+    models: set = set()
+    for entries in _subagent_entries.values():
+        for e in entries:
+            if e.get('type') != 'assistant':
+                continue
+            msg = e.get('message', {})
+            model = msg.get('model', '')
+            if model == '<synthetic>':
+                continue
+            usage = msg.get('usage') or {}
+            if not usage:
+                continue
+            if model:
+                models.add(model)
+            agg['input']       += usage.get('input_tokens', 0)
+            agg['cache_write'] += usage.get('cache_creation_input_tokens', 0)
+            agg['cache_read']  += usage.get('cache_read_input_tokens', 0)
+            agg['output']      += usage.get('output_tokens', 0)
+            agg['turns']       += 1
+            try:
+                added += calc_cost_fn(usage, model)
+            except Exception:
+                pass
+    return added, models
+
+
+def subagent_session_stats(agent_id: str) -> tuple[float, int]:
+    """Return (cost, total_tokens) for a single subagent's own conversation."""
+    entries = _subagent_entries.get(agent_id, [])
+    cost = 0.0
+    toks = 0
+    for e in entries:
+        if e.get('type') != 'assistant':
+            continue
+        msg = e.get('message', {})
+        model = msg.get('model', '')
+        if model == '<synthetic>':
+            continue
+        usage = msg.get('usage') or {}
+        if not usage:
+            continue
+        try:
+            cost += calc_cost(usage, model)
+        except Exception:
+            pass
+        toks += (usage.get('input_tokens', 0)
+                 + usage.get('cache_creation_input_tokens', 0)
+                 + usage.get('cache_read_input_tokens', 0)
+                 + usage.get('output_tokens', 0))
+    return cost, toks
 
 
 # ---------------------------------------------------------------------------
@@ -1490,6 +1746,12 @@ def convert(jsonl_path: Path, out_path: Path) -> None:
 
     print(f"  {len(entries)} entries loaded")
 
+    # Load any subagents spawned by this session (flat folder, includes descendants).
+    load_subagent_context(jsonl_path)
+    # Record parent's own Agent tool_use -> agentId mappings.
+    for tid, aid in build_agent_id_map(entries).items():
+        _agent_id_by_tool[tid] = aid
+
     tool_map = build_tool_map(entries)
     conv_entries = [e for e in entries if e.get('type') in ('user', 'assistant')]
 
@@ -1564,6 +1826,11 @@ def convert(jsonl_path: Path, out_path: Path) -> None:
         turn_cost = calc_cost(usage, model)
         cumul    += turn_cost
         cost_by_uuid[e.get('uuid', '')] = (turn_cost, cumul)
+
+    # Roll in every subagent's own API usage (not reflected in parent's usage entries).
+    sa_added, sa_models = aggregate_subagent_usage(agg, calc_cost)
+    cumul      += sa_added
+    models_seen |= sa_models
 
     total_cost = cumul
     total_tokens_all = agg['input'] + agg['cache_write'] + agg['cache_read'] + agg['output']
